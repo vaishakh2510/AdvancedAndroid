@@ -1,5 +1,6 @@
 package com.example.advanceddemo
 
+
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
@@ -51,6 +52,13 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
-        showListView()
+        letSendData(null)
+        letSendData(Car("123", 56))
+
+        runSendData(Car(speed = 90, id = ""))
+        runSendData(null)
+
+        withSendData(Car(id="56", speed = 89))
+//        withSendData(null)
     }
 }
