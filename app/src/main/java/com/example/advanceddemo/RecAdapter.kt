@@ -1,5 +1,6 @@
 package com.example.advanceddemo
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,11 @@ class CustomAdapter(
     private val list: List<String>
 ) : RecyclerView.Adapter<CustomAdapter.CustomViewHolder>() {
 
-    class CustomViewHolder(
-        private val view : View
-    ) : RecyclerView.ViewHolder(view) {
+    private lateinit var listener : (position: Int) -> Unit
 
+    class CustomViewHolder(
+        val view : View
+    ) : RecyclerView.ViewHolder(view) {
         val textView : TextView = view.findViewById(R.id.textView)
     }
 
@@ -32,5 +34,10 @@ class CustomAdapter(
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.textView.text = list.get(position)
+        holder.view.setOnClickListener { listener(position) }
+    }
+
+    fun setOnItemClickListener( listener: (position: Int) -> Unit ) {
+        this.listener = listener
     }
 }
